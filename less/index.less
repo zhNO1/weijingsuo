@@ -1,0 +1,399 @@
+/* 微金所主题色 */
+
+@mainColor: #e92322;
+@ccc: #ccc;
+@aColor: #666;
+
+/* 头部区域样式 */
+
+#header {
+    border-bottom: 1px solid @ccc;
+    .row {
+        /* 选中栅格列的时候使用子代避免误杀后面的div */
+        > div {
+            border-left: 1px solid @ccc;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 12px;
+            >a {
+                color: @aColor;
+            }
+            .mobile-link {
+                position: relative;
+                display: block;
+                &:hover {
+                    .recode {
+                        display: block;
+                    }
+                }
+                .recode {
+                    top: 40px;
+                    position: absolute;
+                    z-index: 999;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    display: none;
+                }
+            }
+            &:first-child {
+                border-left: 0px;
+            }
+            .btn-danger {
+                background-color: @mainColor;
+            }
+        }
+    }
+}
+
+
+/* 导航条区域样式 */
+
+#nav {
+    margin-bottom: 0px;
+    background-color: #fff;
+    z-index: 998;
+    width: 100%;
+    top: 0px;
+    .navbar-header {
+        /* 移动端点击按钮 */
+        .navbar-toggle {
+            margin-top: 23px;
+        }
+        .navbar-brand {
+            height: 80px;
+            /* 因为a默认有上下padding15px 减去30px */
+            line-height: 50px;
+            >i {
+                font-size: 30px;
+                &:first-child {
+                    color: @mainColor;
+                }
+                &:last-child {
+                    color: #333;
+                }
+            }
+        }
+    }
+    .navbar-nav {
+        > .active {
+            > a {
+                background-color: #fff;
+                border-bottom: 2px solid @mainColor;
+            }
+        }
+        >li {
+            >a {
+                height: 80px;
+                /* 因为a默认有上下padding15px 减去30px */
+                line-height: 50px;
+                &:hover {
+                    border-bottom: 2px solid @mainColor;
+                }
+            }
+        }
+    }
+}
+
+
+/* 轮播图的样式 */
+
+#slide {
+    .pc-img {
+        height: 410px;
+        background-position: center center;
+    }
+    .mobile-img {
+        width: 100%;
+    }
+}
+
+
+/* 支付交易保障广告区域 */
+
+#payment {
+    /* 父元素和子元素的间距用padding */
+    padding: 40px 0;
+    .media {
+        /* 兄弟直接的间距通常使用margin */
+        margin-top: 10px;
+        >a {
+            color: @aColor;
+            &:hover {
+                color: @mainColor;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+/* 立即预约区域样式 */
+
+#booking {
+    padding: 20px 0;
+    border-top: 1px solid @ccc;
+    border-bottom: 1px solid @ccc;
+    p {
+        margin-bottom: 0;
+    }
+}
+
+
+/* 商品区域样式 */
+
+#products {
+    padding: 40px 0;
+    background-color: #eee;
+    /* 针对iphone5以下屏幕单独处理 */
+    @media(max-width: 320px) {
+        .container {
+            padding: 0px;
+        }
+    }
+    .ul-wrapper {
+        /* 父元素宽度固定为屏幕的大小 */
+        width: 100%;
+        /* 添加允许出现滚动条的样式 */ /* 父元素宽度固定为屏幕的大小 */
+        width: 100%;
+        /* 添加允许出现滚动条的样式 */
+        overflow-x: auto;
+        position: relative;
+        /* tab栏的标题 */
+        /*滚动条样式*/
+        &::-webkit-scrollbar {
+            /*滚动条整体样式*/
+            width: 10px;
+            /*高宽分别对应横竖滚动条的尺寸*/
+            height: 5px;
+        }
+        &::-webkit-scrollbar-thumb {
+            /*滚动条里面小方块*/
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background: rgba(255, 0, 0, 0.5);
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+        }
+        &::-webkit-scrollbar-track {
+            /*滚动条里面轨道*/
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+        .nav-tabs {
+            width: 600px;
+            >li {
+                &.active {
+                    >a {
+                        background-color: transparent;
+                        border-bottom: 3px solid @mainColor;
+                    }
+                }
+                >a {
+                    color: @aColor;
+                    font-size: 16px;
+                    border: 0;
+                }
+            }
+        }
+    }
+    .tab-pane {
+        >.row {
+            > div {
+                .product {
+                    display: flex;
+                    background-color: #fff;
+                    margin-top: 20px;
+                    position: relative;
+                    &.active {
+                        background-color: @mainColor;
+                        color: #fff;
+                        &::before {
+                            /* 使用当前图标的编码 */
+                            content: "\e915";
+                            /* 当前图标的字体 */
+                            font-family: 'itcast';
+                            font-size: 30px;
+                            position: absolute;
+                            left: 0px;
+                            top: -6px;
+                        }
+                    }
+                    .product-left {
+                        /* 左边就是剩下的宽度 */
+                        flex: 1;
+                        height: 160px;
+                        >h4 {
+                            text-align: center;
+                        }
+                        >.row {
+                            /* 把里面的row的margin-left负值去掉 */
+                            margin: 0px;
+                            >div:nth-child(odd) {
+                                text-align: left;
+                            }
+                            >div:nth-child(even) {
+                                text-align: right;
+                            }
+                        }
+                    }
+                    .product-right {
+                        width: 120px;
+                        height: 160px;
+                        border-left: 1px dashed @ccc;
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        /* 垂直居中  主轴是垂直*/
+                        justify-content: center;
+                        /* 水平居中 */
+                        align-items: center;
+                        >p {
+                            margin-bottom: 0;
+                            >strong {
+                                font-size: 30px;
+                            }
+                        }
+                        &::before,
+                        &::after {
+                            content: '';
+                            width: 16px;
+                            height: 16px;
+                            border-radius: 50%;
+                            background-color: #eee;
+                            position: absolute;
+                            left: -8px;
+                        }
+                        &::before {
+                            top: -8px;
+                        }
+                        &::after {
+                            bottom: -8px;
+                        }
+                        .tooltips {
+                            position: absolute;
+                            left: 0px;
+                            top: 20px;
+                            width: 100%;
+                            text-align: center;
+                            .one,
+                            .two {
+                                width: 20px;
+                                height: 20px;
+                                border: 1px solid @mainColor;
+                                color: @mainColor;
+                                background-color: #fff;
+                                padding: 0;
+                            }
+                            .two {
+                                border: 1px solid #0f0;
+                                color: #0f0;
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* 新闻区域样式 */
+
+#news {
+    padding: 40px 0;
+    .row {
+        >div {
+            >h4 {
+                text-align: center;
+                border-bottom: 1px dashed @ccc;
+                padding: 10px 0;
+                position: relative;
+                &::after {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    border: 1px solid @ccc;
+                    position: absolute;
+                    right: -10px;
+                    bottom: -5px;
+                }
+            }
+            .nav-tabs {
+                border-bottom: 0;
+                >li {
+                    /* 当ipad以下的屏幕让li 各占25% 居中显示 */
+                    @media(max-width: 992px) {
+                        width: 25%;
+                        >a {
+                            margin: 0px auto;
+                            display: block;
+                        }
+                    }
+                    &.active {
+                        >a {
+                            background-color: @mainColor;
+                        }
+                    }
+                    >a {
+                        width: 62px;
+                        height: 62px;
+                        border-radius: 50%;
+                        margin-bottom: 10px;
+                        color: @ccc;
+                        border: 0;
+                        &:hover {
+                            background-color: @mainColor;
+                        }
+                        >i {
+                            font-size: 30px;
+                        }
+                    }
+                }
+            }
+            .tab-content {
+                >.tab-pane {
+                    > ul {
+                        >li {
+                            list-style: none;
+                            line-height: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* 合作伙伴区域样式 */
+
+#partner {
+    h3 {
+        text-align: center;
+    }
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        >li {
+            flex: 1;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            >a {
+                color: @aColor;
+                text-decoration: none;
+                &:hover {
+                    color: @mainColor;
+                }
+                >i {
+                    font-size: 60px;
+                }
+            }
+        }
+    }
+}
